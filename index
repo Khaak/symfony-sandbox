@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+// application.php
+/**
+requres curl, mysqlPDO
+
+*/
+require __DIR__ . '/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use GitSandbox\Command\ConfigureCommand;
+use GitSandbox\Command\UserAddCommand;
+use GitSandbox\Command\UserRemoveCommand;
+use GitSandbox\Command\ProjectAddCommand;
+use GitSandbox\Command\ProjectRemoveCommand;
+
+
+
+$application = new Application();
+$application->add(new ConfigureCommand());
+if(file_exists("config.php")){
+	$application->add(new UserAddCommand());
+	$application->add(new UserRemoveCommand());
+	$application->add(new ProjectAddCommand());
+	$application->add(new ProjectRemoveCommand());
+}
+$application->run();
