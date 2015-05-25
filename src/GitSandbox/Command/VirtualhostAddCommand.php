@@ -26,7 +26,7 @@ class VirtualhostAddCommand extends Command {
 			)
 			->addArgument(
 				'user',
-				InputArgument::OPTINAL,
+				InputArgument::OPTIONAL,
 				''
 			)->addArgument(
 			'encoding',
