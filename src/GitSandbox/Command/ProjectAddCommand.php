@@ -56,13 +56,13 @@ class ProjectAddCommand extends Command {
 			throw new \Exception('Project ' . $projectname . ' already exists');
 		}
 		$fs->mkdir($project_path_full, 0775);
-		$fs->copy("/etc/git-sandbox/vm.tar.gz", $project_path_full . "vm.tar.gz");
-		$p = new \PharData($project_path_full . "vm.tar.gz");
+		$fs->copy("/etc/git-sandbox/vm.tar.gz", $project_path_full . "/vm.tar.gz");
+		$p = new \PharData($project_path_full . "/vm.tar.gz");
 		$p->decompress();
-		$fs->remove($project_path_full . "vm.tar.gz");
-		$phar = new \PharData($project_path_full . "vm.tar");
+		$fs->remove($project_path_full . "/vm.tar.gz");
+		$phar = new \PharData($project_path_full . "/vm.tar");
 		$phar->extractTo($project_path_full);
-		$fs->remove($project_path_full . "vm.tar");
+		$fs->remove($project_path_full . "/vm.tar");
 		$pass = new PasswordGenerator();
 		$dbHost = "localhost";
 		$dbLogin = $projectname;
