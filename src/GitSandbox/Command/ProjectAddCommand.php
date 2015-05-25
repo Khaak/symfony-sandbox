@@ -59,20 +59,7 @@ class ProjectAddCommand extends Command {
 		$fs->mkdir($project_path_full, 0775);
 		$fs->copy("/etc/git-sandbox/vm.tar.gz", $project_path_full . "/vm.tar.gz");
 
-		/*
-		$my_tar = new tar;
-		$my_tar->patchname = $project_path_full;
-		$my_tar->tarname = 'vm.tar.gz';
-		$my_tar->tarAllunarch();
-		echo $my_tar->error;
-		/*
-		$p = new \PharData($project_path_full . "/vm.tar.gz");
-		$p->decompress();
-		$phar = new \PharData($project_path_full . "/vm.tar");
-		$phar->extractTo($project_path_full);
-		$fs->remove($project_path_full . "/vm.tar");
-		 */
-		$process = new Process('tar -xf ' . $project_path_full . "/vm.tar.gz");
+		$process = new Process('tar -xf ' . $project_path_full . "/vm.tar.gz -C " . $project_path_full);
 		$process->run();
 		if (!$process->isSuccessful()) {
 			throw new \RuntimeException($process->getErrorOutput());
@@ -86,7 +73,7 @@ class ProjectAddCommand extends Command {
 		$dbPasswd = $pass->generate();
 		$sqlstring = "CREATE DATABASE " . $dbName . "; GRANT ALL PRIVILEGES ON " . $dbName . ".* TO '" . $dbLogin . "'@'%' IDENTIFIED BY '" . $dbPasswd . "'; GRANT ALL PRIVILEGES ON " . $dbName . ".* TO '" . $dbLogin . "'@'localhost' IDENTIFIED BY '" . $dbPasswd . "';";
 		try {
-			$dbh = new PDO("mysql:host=$dbHost", $settings["DB_USER"], $settings["DB_PASS"]);
+			$dbh = new \PDO("mysql:host=$dbHost", $settings["DB_USER"], $settings["DB_PASS"]);
 			if (!$dbh->exec($sqlstring)) {
 				throw new \Exception(print_r($dbh->errorInfo(), true));
 			}
