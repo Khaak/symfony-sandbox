@@ -3,6 +3,7 @@
 namespace GitSandbox\Command;
 
 use GitSandbox\PasswordGenerator;
+use GitSandbox\tar;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -57,12 +58,21 @@ class ProjectAddCommand extends Command {
 		}
 		$fs->mkdir($project_path_full, 0775);
 		$fs->copy("/etc/git-sandbox/vm.tar.gz", $project_path_full . "/vm.tar.gz");
-		$p = new \PharData($project_path_full . "/vm.tar.gz");
-		$p->decompress();
-		$fs->remove($project_path_full . "/vm.tar.gz");
-		$phar = new \PharData($project_path_full . "/vm.tar");
-		$phar->extractTo($project_path_full);
-		$fs->remove($project_path_full . "/vm.tar");
+
+		$my_tar = new tar;
+		$my_tar->patchname = $project_path_full;
+		$my_tar->tarname = 'vm.tar.gz';
+		$my_tar->tarAllunarch();
+		echo $my_tar->error;
+/*
+$p = new \PharData($project_path_full . "/vm.tar.gz");
+$p->decompress();
+$fs->remove($project_path_full . "/vm.tar.gz");
+$phar = new \PharData($project_path_full . "/vm.tar");
+$phar->extractTo($project_path_full);
+$fs->remove($project_path_full . "/vm.tar");
+ */
+
 		$pass = new PasswordGenerator();
 		$dbHost = "localhost";
 		$dbLogin = $projectname;
