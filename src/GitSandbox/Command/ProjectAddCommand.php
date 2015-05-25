@@ -61,7 +61,7 @@ class ProjectAddCommand extends Command {
 		$p->decompress();
 		$fs->remove($project_path_full . "/vm.tar.gz");
 		$phar = new \PharData($project_path_full . "/vm.tar");
-		$phar->extractTo($project_path_full . "/");
+		$phar->extractTo($project_path_full);
 		$fs->remove($project_path_full . "/vm.tar");
 		$pass = new PasswordGenerator();
 		$dbHost = "localhost";
