@@ -73,7 +73,7 @@ class ProjectAddCommand extends Command {
 		$dbPasswd = $pass->generate();
 		$sqlstring = "CREATE DATABASE " . $dbName . "; GRANT ALL PRIVILEGES ON " . $dbName . ".* TO '" . $dbLogin . "'@'%' IDENTIFIED BY '" . $dbPasswd . "'; GRANT ALL PRIVILEGES ON " . $dbName . ".* TO '" . $dbLogin . "'@'localhost' IDENTIFIED BY '" . $dbPasswd . "';";
 		try {
-			$dbh = new \PDO("mysql:host=$dbHost", $settings["DB_USER"], $settings["DB_PASS"]);
+			$dbh = new \PDO("mysql:host=127.0.0.1", $settings["DB_USER"], $settings["DB_PASS"]);
 			if (!$dbh->exec($sqlstring)) {
 				throw new \Exception(print_r($dbh->errorInfo(), true));
 			}
