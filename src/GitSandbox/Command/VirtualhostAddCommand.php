@@ -163,7 +163,7 @@ class VirtualhostAddCommand extends Command {
 		$fs->symlink($nginxconffile, $settings["NGINX_CONF_DIR"] . "sandbox/site_enabled/" . $vhost_name . ".conf");
 		$httpdtemplate = file_get_contents($httpdtemplatefile);
 		$tags = array("#SERVER_NAME#", "#SERVER_DIR#", "#PHP_OVERLOAD#", "#PHP_INTERNAL#", "#PHP_SESSIONS#", "#PHP_UPLOAD#");
-		$set = array($vhost_name, $vhost_root, $phpoverload, $phpinternal, $phpsessionsavepath, $phpuploadtmpdir);
+		$set = array($vhost_name, $vhost_root, $phpoverload, $phpinternal, "php_admin_value session.save_path " . $phpsessionsavepath, "php_admin_value upload_tmp_dir " . $phpuploadtmpdir);
 		if ($type == "sandbox") {
 			$tags[] = "#USER_GROUP#";
 			$set[] = $user . " " . $settings["PROJECT_GROUP"];
