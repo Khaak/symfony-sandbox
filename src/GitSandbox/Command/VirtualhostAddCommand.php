@@ -152,7 +152,7 @@ class VirtualhostAddCommand extends Command {
 		$fs->chgrp($phpuploadtmpdir, $settings["PROJECT_GROUP"]);
 		$nginxtemplatefile = $settings["TEMPLATES_DIR"] . "/" . $type . "/nginx/site_template.conf";
 		$httpdtemplatefile = $settings["TEMPLATES_DIR"] . "/" . $type . "/httpd/site_template.conf";
-		$nginxconffile = $settings["NGINX_CONF_DIR"] . "sandbox/site_avaliable/" . $vhost_name . ".conf";
+		$nginxconffile = $settings["NGINX_CONF_DIR"] . "/sandbox/site_avaliable/" . $vhost_name . ".conf";
 		$httpdconffile = $settings["HTTPD_CONF_DIR"] . "/sandbox/conf/" . $vhost_name . ".conf";
 		$nginxtemplate = file_get_contents($nginxtemplatefile);
 		$tags = array("#SERVER_NAME#", "#SERVER_DIR#", "#SERVER_ENCODING#");
