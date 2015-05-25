@@ -97,6 +97,8 @@ class VirtualhostAddCommand extends Command {
 		}
 		$type = $input->getArgument('type');
 		$projectname = $input->getArgument('project');
+		$project_path = "/home/" . $settings["PROJECT_USER"] . "/projects";
+		$project_path_full = $project_path . "/" . $projectname . "/httpdocs";
 		$fs = new Filesystem();
 		if (!$fs->exists($project_path_full)) {
 			throw new \Exception('Project ' . $projectname . ' not exists');
