@@ -12,7 +12,7 @@ use Symfony\Component\Filesystem\Filesystem;
 class ProjectAddCommand extends Command {
 	protected function configure() {
 		$this
-			->setName('sandbox:ProjectAdd')
+			->setName('sandbox:project_add')
 			->setDescription('Add project')
 			->addArgument(
 				'name',
@@ -42,7 +42,7 @@ class ProjectAddCommand extends Command {
 		}
 	}
 	protected function execute(InputInterface $input, OutputInterface $output) {
-		require "config.php";
+		require "/etc/git-sandbox/config.php";
 		if (posix_geteuid() !== 0) {
 			throw new \Exception('This script should be run as root.');
 		}

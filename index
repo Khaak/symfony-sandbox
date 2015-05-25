@@ -13,15 +13,23 @@ use GitSandbox\Command\UserAddCommand;
 use GitSandbox\Command\UserRemoveCommand;
 use GitSandbox\Command\ProjectAddCommand;
 use GitSandbox\Command\ProjectRemoveCommand;
+use GitSandbox\Command\SandboxAddCommand;
+use GitSandbox\Command\SandboxRemoveCommand;
+use GitSandbox\Command\VirtualhostAddCommand;
+use GitSandbox\Command\VirtualhostRemoveCommand;
 
 
 
 $application = new Application();
 $application->add(new ConfigureCommand());
-if(file_exists("config.php")){
+if(file_exists("/etc/git-sandbox/config.php")){
 	$application->add(new UserAddCommand());
 	$application->add(new UserRemoveCommand());
 	$application->add(new ProjectAddCommand());
 	$application->add(new ProjectRemoveCommand());
+	$application->add(new SandboxAddCommand());
+	$application->add(new SandboxRemoveCommand());
+	$application->add(new VirtualhostAddCommand());
+	$application->add(new VirtualhostRemoveCommand());
 }
 $application->run();

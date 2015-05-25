@@ -13,7 +13,7 @@ use Symfony\Component\Process\Process;
 class UserAddCommand extends Command {
 	protected function configure() {
 		$this
-			->setName('sandbox:UserAdd')
+			->setName('sandbox:user_add')
 			->setDescription('Add sandbox user')
 			->addArgument(
 				'name',
@@ -56,7 +56,7 @@ class UserAddCommand extends Command {
 		}
 	}
 	protected function execute(InputInterface $input, OutputInterface $output) {
-		require "config.php";
+		require "/etc/git-sandbox/config.php";
 		if (posix_geteuid() !== 0) {
 			throw new \Exception('This script should be run as root.');
 		}
@@ -84,11 +84,11 @@ class UserAddCommand extends Command {
 		if (!$process->isSuccessful()) {
 			throw new \RuntimeException($process->getErrorOutput());
 		}
-		/*$process = new Process('echo ' . $password . ' | passwd ' . $name . ' --stdin');
+		$process = new Process('echo ' . $password . ' | passwd ' . $name . ' --stdin');
 		$process->run();
 		if (!$process->isSuccessful()) {
-		throw new \RuntimeException($process->getErrorOutput());
-		}*/
+			throw new \RuntimeException($process->getErrorOutput());
+		}
 
 		$fs = new Filesystem();
 		try {

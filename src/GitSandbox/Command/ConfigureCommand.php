@@ -11,7 +11,7 @@ use Symfony\Component\Filesystem\Filesystem;
 class ConfigureCommand extends Command {
 	protected function configure() {
 		$this
-			->setName('sandbox:Configure')
+			->setName('sandbox:configure')
 			->setDescription('')
 			->addArgument(
 				'user',
@@ -211,7 +211,7 @@ $settings["DB_USER"]="' . $dbuser . '";
 $settings["DB_PASS"]="' . $dbpass . '";
 ?>';
 		$fs = new Filesystem();
-		$fs->dumpFile('config.php', $file_cont);
+		$fs->dumpFile('/etc/git-sandbox/config.php', $file_cont);
 		$output->writeln("Done");
 	}
 }

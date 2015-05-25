@@ -11,7 +11,7 @@ use Symfony\Component\Filesystem\Filesystem;
 class ProjectRemoveCommand extends Command {
 	protected function configure() {
 		$this
-			->setName('sandbox:ProjectRemove')
+			->setName('sandbox:project_remove')
 			->setDescription('Remove project')
 			->addArgument(
 				'name',
@@ -52,7 +52,7 @@ class ProjectRemoveCommand extends Command {
 		}
 	}
 	protected function execute(InputInterface $input, OutputInterface $output) {
-		require "config.php";
+		require "/etc/git-sandbox/config.php";
 		if (posix_geteuid() !== 0) {
 			throw new \Exception('This script should be run as root.');
 		}

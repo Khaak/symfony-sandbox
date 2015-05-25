@@ -12,7 +12,7 @@ use Symfony\Component\Process\Process;
 class UserRemoveCommand extends Command {
 	protected function configure() {
 		$this
-			->setName('sandbox:UserRemove')
+			->setName('sandbox:user_remove')
 			->setDescription('Remove sandbox user')
 			->addArgument(
 				'name',
@@ -37,7 +37,7 @@ class UserRemoveCommand extends Command {
 		}
 	}
 	protected function execute(InputInterface $input, OutputInterface $output) {
-		require "config.php";
+		require "/etc/git-sandbox/config.php";
 		if (posix_geteuid() !== 0) {
 			throw new \Exception('This script should be run as root.');
 		}
