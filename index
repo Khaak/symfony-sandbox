@@ -2,7 +2,7 @@
 <?php
 // application.php
 /**
-requres curl, mysqlPDO
+requres curl, mysqlPDO, phar
 
 */
 require __DIR__ . '/vendor/autoload.php';
