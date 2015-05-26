@@ -19,7 +19,7 @@ class ProjectRemoveCommand extends Command {
 				''
 			)->addArgument(
 			'confirm',
-			InputArgument::REQUIRED,
+			InputArgument::OPTIONAL,
 			''
 		)
 		;

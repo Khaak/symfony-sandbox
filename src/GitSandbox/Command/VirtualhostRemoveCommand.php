@@ -20,7 +20,7 @@ class VirtualhostRemoveCommand extends Command {
 				''
 			)->addArgument(
 			'confirm',
-			InputArgument::REQUIRED,
+			InputArgument::OPTIONAL,
 			''
 		)
 		;

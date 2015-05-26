@@ -24,7 +24,7 @@ class SandboxRemoveCommand extends Command {
 				''
 			)->addArgument(
 			'confirm',
-			InputArgument::REQUIRED,
+			InputArgument::OPTIONAL,
 			''
 		)
 		;
@@ -59,7 +59,7 @@ class SandboxRemoveCommand extends Command {
 		if ($input->getArgument('confirm') != "yes") {
 			$confirm = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please confirm. Type "yes" for remove.',
+				'Please confirm. Type "yes" for remove:',
 				function ($confirm) {
 					if ($confirm != "yes") {
 						throw new \Exception('Aborted by user');
