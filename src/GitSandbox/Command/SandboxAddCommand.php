@@ -61,11 +61,15 @@ class SandboxAddCommand extends Command {
 		$projectname = $input->getArgument('project');
 		$user = $input->getArgument('user');
 		$handle = @fopen("/etc/passwd", "r");
+		$result = 0;
 		if ($handle) {
 			while (($buffer = fgets($handle, 4096)) !== false) {
-				if (strpos($buffer, $user . ':') !== 0) {
-					throw new \Exception('Can\'t find user ' . $user . '.');
+				if (strpos($buffer, $user . ':') === 0) {
+					$result = 1;
 				}
+			}
+			if ($result == 0) {
+				throw new \Exception('Can\'t find user ' . $user . '.');
 			}
 			if (!feof($handle)) {
 				throw new \Exception("Error: unexpected fgets() fail");
