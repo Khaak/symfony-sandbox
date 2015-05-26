@@ -48,8 +48,8 @@ class ProjectAddCommand extends Command {
 			throw new \Exception('This script should be run as root.');
 		}
 		$projectname = $input->getArgument('name');
-		$url_bitrixsetup = "http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php";
-		$url_bitrixrestore = "http://www.1c-bitrix.ru/download/scripts/restore.php";
+		$url_bitrixsetup = "http://www.1c-bitrix.ru/download/files/scripts/bitrixsetup.php";
+		$url_bitrixrestore = "http://www.1c-bitrix.ru/download/files/scripts/restore.php";
 		$project_path = "/home/" . $settings["PROJECT_USER"] . "/projects";
 		$project_path_full = $project_path . "/" . $projectname . "/httpdocs";
 		$fs = new Filesystem();
