@@ -58,8 +58,8 @@ class VirtualhostRemoveCommand extends Command {
 			throw new \Exception('This script should be run as root.');
 		}
 		$host = $input->getArgument('host');
-		$nginxconffile1 = $settings["NGINX_CONF_DIR"] . "sandbox/site_avaliable/" . $host . ".conf";
-		$nginxconffile2 = $settings["NGINX_CONF_DIR"] . "sandbox/site_enabled/" . $host . ".conf";
+		$nginxconffile1 = $settings["NGINX_CONF_DIR"] . "/sandbox/site_avaliable/" . $host . ".conf";
+		$nginxconffile2 = $settings["NGINX_CONF_DIR"] . "/sandbox/site_enabled/" . $host . ".conf";
 		$httpdconffile = $settings["HTTPD_CONF_DIR"] . "/sandbox/conf/" . $host . ".conf";
 		$phpsessionsavepath = '/tmp/php_sessions/' . $host;
 		$phpuploadtmpdir = '/tmp/php_upload/' . $host;
