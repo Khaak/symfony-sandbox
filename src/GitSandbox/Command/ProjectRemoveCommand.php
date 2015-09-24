@@ -64,7 +64,7 @@ class ProjectRemoveCommand extends Command {
 			include $dbconn;
 
 		}
-		$sqlstring = "DROP DATABASE " . $DBName . "; DROP USER " . $DBLogin . "@'%';";
+		$sqlstring = 'DROP DATABASE ' . $DBName . '; DROP USER ' . $DBLogin . '@\'%\';';
 		try {
 			$dbh = new \PDO("mysql:host=127.0.0.1", $settings["DB_USER"], $settings["DB_PASS"]);
 			if (!$dbh->exec($sqlstring)) {
