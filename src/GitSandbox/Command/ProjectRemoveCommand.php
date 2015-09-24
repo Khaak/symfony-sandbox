@@ -68,9 +68,7 @@ class ProjectRemoveCommand extends Command {
 		try {
 			$dbh = new \PDO("mysql:host=127.0.0.1", $settings["DB_USER"], $settings["DB_PASS"]);
 			if (!$dbh->exec($sqlstring)) {
-				$err=$dbh->errorInfo();
-				$err[]=$dbconn;
-				throw new \Exception(print_r($err, true));
+				throw new \Exception(print_r($dbh->errorInfo(), true));
 			}
 
 		} catch (PDOException $e) {
