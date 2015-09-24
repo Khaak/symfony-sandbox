@@ -57,9 +57,9 @@ class ProjectRemoveCommand extends Command {
 			throw new \Exception('This script should be run as root.');
 		}
 		$name = $input->getArgument('name');
-		$project_path = "/home/" . $settings["PROJECT_USER"] . "/projects";
-		$project_path_full = $project_path . "/" . $projectname . "/httpdocs";
-		$dbconn = $project_path_full . "/bitrix/php_interface/dbconn.php";
+		$project_path = '/home/' . $settings["PROJECT_USER"] . '/projects';
+		$project_path_full = $project_path . '/' . $projectname . '/httpdocs';
+		$dbconn = $project_path_full . '/bitrix/php_interface/dbconn.php';
 		if (file_exists($dbconn)) {
 			include $dbconn;
 
