@@ -92,7 +92,7 @@ class SandboxRemoveCommand extends Command {
 			}
 			fclose($handle);
 		}
-		$project_path_full = "/home/" . $settings["PROJECT_USER"] . "/projects/" . $project . "/httpdocs";
+		$project_path_full = '/home/'.$settings["PROJECT_USER"].'/projects/'.$projectname.'/httpdocs';
 		$fs = new Filesystem();
 		if (!$fs->exists($project_path_full)) {
 			throw new \Exception('Project ' . $projectname . ' not exists (' . $project_path_full . ')');
