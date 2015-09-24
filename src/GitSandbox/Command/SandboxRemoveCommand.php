@@ -97,7 +97,7 @@ class SandboxRemoveCommand extends Command {
 		if (!$fs->exists($project_path_full)) {
 			throw new \Exception('Project ' . $projectname . ' not exists (' . $project_path_full . ')');
 		}
-		$sandbox_path = "/home/". $user . "/www/" . $projectname . '/httpdocs';
+		$sandbox_path = "/home/". $user . "/www/" . $projectname;
 		if (!$fs->exists($sandbox_path)) {
 			throw new \Exception('Sandbox ' . $user . $projectname . ' not exists');
 		}
