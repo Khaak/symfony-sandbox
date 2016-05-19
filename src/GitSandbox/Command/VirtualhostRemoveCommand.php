@@ -29,7 +29,7 @@ class VirtualhostRemoveCommand extends Command {
 		if (!$input->getArgument('host')) {
 			$host = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please enter a host name:',
+				'Please enter a host name: ',
 				function ($host) {
 					if (empty($host)) {
 						throw new \Exception('Host name can not be empty');
@@ -42,7 +42,7 @@ class VirtualhostRemoveCommand extends Command {
 		if ($input->getArgument('confirm') != "yes") {
 			$confirm = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please confirm. Type "yes" for remove.',
+				'Please confirm. Type "yes" for remove. ',
 				function ($confirm) {
 					if ($confirm != "yes") {
 						throw new \Exception('Aborted by user');

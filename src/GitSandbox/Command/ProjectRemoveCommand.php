@@ -28,7 +28,7 @@ class ProjectRemoveCommand extends Command {
 		if (!$input->getArgument('name')) {
 			$name = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please choose a name:',
+				'Please enter a name: ',
 				function ($name) {
 					if (empty($name)) {
 						throw new \Exception('Username can not be empty');
@@ -41,7 +41,7 @@ class ProjectRemoveCommand extends Command {
 		if ($input->getArgument('confirm') != "yes") {
 			$confirm = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please confirm. Type "yes" for remove.',
+				'Please confirm. Type "yes" for remove. ',
 				function ($confirm) {
 					if ($confirm != "yes") {
 						throw new \Exception('Aborted by user');

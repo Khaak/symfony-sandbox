@@ -29,7 +29,7 @@ class SandboxAddCommand extends Command {
 		if (!$input->getArgument('project')) {
 			$project = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please enter a project name:',
+				'Please enter a project name: ',
 				function ($project) {
 					if (empty($project)) {
 						throw new \Exception('Project name can not be empty');
@@ -42,7 +42,7 @@ class SandboxAddCommand extends Command {
 		if (!$input->getArgument('user')) {
 			$user = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please enter a username:',
+				'Please enter a username: ',
 				function ($user) {
 					if (empty($user)) {
 						throw new \Exception('User name can not be empty');

@@ -33,7 +33,7 @@ class SandboxRemoveCommand extends Command {
 		if (!$input->getArgument('project')) {
 			$project = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please enter a project name:',
+				'Please enter a project name: ',
 				function ($project) {
 					if (empty($project)) {
 						throw new \Exception('Project name can not be empty');
@@ -46,7 +46,7 @@ class SandboxRemoveCommand extends Command {
 		if (!$input->getArgument('user')) {
 			$user = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please enter a username:',
+				'Please enter a username: ',
 				function ($user) {
 					if (empty($user)) {
 						throw new \Exception('User name can not be empty');
@@ -59,7 +59,7 @@ class SandboxRemoveCommand extends Command {
 		if ($input->getArgument('confirm') != "yes") {
 			$confirm = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please confirm. Type "yes" for remove:',
+				'Please confirm. Type "yes" for remove. ',
 				function ($confirm) {
 					if ($confirm != "yes") {
 						throw new \Exception('Aborted by user');
@@ -92,12 +92,12 @@ class SandboxRemoveCommand extends Command {
 			}
 			fclose($handle);
 		}
-		$project_path_full = '/home/'.$settings["PROJECT_USER"].'/projects/'.$projectname.'/httpdocs';
+		$project_path_full = '/home/' . $settings["PROJECT_USER"] . '/projects/' . $projectname . '/httpdocs';
 		$fs = new Filesystem();
 		if (!$fs->exists($project_path_full)) {
 			throw new \Exception('Project ' . $projectname . ' not exists (' . $project_path_full . ')');
 		}
-		$sandbox_path = "/home/". $user . "/www/" . $projectname;
+		$sandbox_path = "/home/" . $user . "/www/" . $projectname;
 		if (!$fs->exists($sandbox_path)) {
 			throw new \Exception('Sandbox ' . $user . $projectname . ' not exists');
 		}

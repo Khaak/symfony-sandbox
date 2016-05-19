@@ -64,7 +64,7 @@ class ConfigureCommand extends Command {
 		if (!$input->getArgument('user')) {
 			$user = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please choose a project user (Can not be empty):',
+				'Please choose a project user (Can not be empty): ',
 				function ($user) {
 					if (empty($user)) {
 						throw new \Exception('Can not be empty');
@@ -77,7 +77,7 @@ class ConfigureCommand extends Command {
 		if (!$input->getArgument('group')) {
 			$group = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please choose a devevopment group (Can not be empty):',
+				'Please choose a devevopment group (Can not be empty): ',
 				function ($group) {
 					if (empty($group)) {
 						throw new \Exception('Can not be empty');
@@ -90,7 +90,7 @@ class ConfigureCommand extends Command {
 		if (!$input->getArgument('encoding')) {
 			$encoding = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please enter a default site encoding (Can not be empty):',
+				'Please enter a default site encoding (Can not be empty): ',
 				function ($encoding) {
 					if (empty($encoding)) {
 						throw new \Exception('Can not be empty');
@@ -103,7 +103,7 @@ class ConfigureCommand extends Command {
 		if (!$input->getArgument('domain')) {
 			$domain = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please enter a base domain (Can not be empty):',
+				'Please enter a base domain (Can not be empty): ',
 				function ($domain) {
 					if (empty($domain)) {
 						throw new \Exception('Can not be empty');
@@ -116,7 +116,7 @@ class ConfigureCommand extends Command {
 		if (!$input->getArgument('templatesdir')) {
 			$templatesdir = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please locate a vhost templates directory (Can not be empty):',
+				'Please locate a vhost templates directory (Can not be empty): ',
 				function ($templatesdir) {
 					if (empty($templatesdir)) {
 						throw new \Exception('Can not be empty');
@@ -129,7 +129,7 @@ class ConfigureCommand extends Command {
 		if (!$input->getArgument('httpdconf')) {
 			$httpdconf = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please locate a httpd conf directory (Can not be empty):',
+				'Please locate a httpd conf directory (Can not be empty): ',
 				function ($httpdconf) {
 					if (empty($httpdconf)) {
 						throw new \Exception('Can not be empty');
@@ -142,7 +142,7 @@ class ConfigureCommand extends Command {
 		if (!$input->getArgument('nginxconf')) {
 			$nginxconf = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please locate a nginx conf directory (Can not be empty):',
+				'Please locate a nginx conf directory (Can not be empty): ',
 				function ($nginxconf) {
 					if (empty($nginxconf)) {
 						throw new \Exception('Can not be empty');
@@ -155,7 +155,7 @@ class ConfigureCommand extends Command {
 		if (!$input->getArgument('dbuser')) {
 			$dbuser = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please enter a database admin login (Can not be empty):',
+				'Please enter a database admin login (Can not be empty): ',
 				function ($dbuser) {
 					if (empty($dbuser)) {
 						throw new \Exception('Can not be empty');
@@ -168,7 +168,7 @@ class ConfigureCommand extends Command {
 		if (!$input->getArgument('dbpass')) {
 			$dbpass = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please enter a database admin password:',
+				'Please enter a database admin password: ',
 				function ($dbpass) {
 					return $dbpass;
 				}

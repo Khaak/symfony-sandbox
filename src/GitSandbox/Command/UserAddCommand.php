@@ -31,7 +31,7 @@ class UserAddCommand extends Command {
 		if (!$input->getArgument('name')) {
 			$name = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please choose a name:',
+				'Please enter a name: ',
 				function ($name) {
 					if (empty($name)) {
 						throw new \Exception('Username can not be empty');
@@ -44,7 +44,7 @@ class UserAddCommand extends Command {
 		if (!$input->getArgument('password')) {
 			$password = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please choose a password:',
+				'Please enter a password: ',
 				function ($password) {
 					if (empty($password)) {
 						throw new \Exception('Password can not be empty');

@@ -31,7 +31,7 @@ class ProjectAddCommand extends Command {
 		if (!$input->getArgument('name')) {
 			$name = $this->getHelper('dialog')->askAndValidate(
 				$output,
-				'Please enter a name:',
+				'Please enter a name: ',
 				function ($name) {
 					if (empty($name)) {
 						throw new \Exception('Project name can not be empty');
