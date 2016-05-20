@@ -8,6 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class VirtualhostAddCommand extends Command {
 	protected function configure() {
@@ -150,7 +151,7 @@ class VirtualhostAddCommand extends Command {
 			$process = new Process('grep -r "mbstring.func_overload[ \t]*0" '.$projecthttpdconffile);
 			$process->run();
 			if (!$process->isSuccessful()) {
-				throw new \RuntimeException($process->getErrorOutput());
+				throw new ProcessFailedException($process);
 			}else{
 				$output=trim($process->getOutput(), " \t");
 			}
