@@ -151,7 +151,7 @@ class VirtualhostAddCommand extends Command {
 			$process = new Process('grep -r "mbstring.func_overload[ \t]*0" '.$projecthttpdconffile);
 			$process->run();
 			if (!$process->isSuccessful()) {
-				throw new ProcessFailedException($process);
+				$encoding = $settings["ENCODING_SITE"];
 			}else{
 				$output=trim($process->getOutput(), " \t");
 			}
