@@ -81,12 +81,14 @@ class SandboxAddCommand extends Command {
 		if (!$fs->exists($project_path_full)) {
 			throw new \Exception('Project ' . $projectname . ' not exists');
 		}
-		$sandbox_path = "/home/" . $user . "/www/" . $projectname . '/httpdocs';
-		$fs->mkdir($sandbox_path, 0775);
-		$fs->symlink($project_path_full . '/bitrix', $sandbox_path . '/bitrix');
-		$fs->symlink($project_path_full . '/upload', $sandbox_path . '/upload');
+		$sandbox_path_full = "/home/" . $user . "/www/" . $projectname . '/httpdocs';
+		$fs->mkdir($sandbox_path_full, 0775);
+		$fs->symlink($project_path_full . '/bitrix', $sandbox_path_full . '/bitrix');
+		$fs->symlink($project_path_full . '/upload', $sandbox_path_full . '/upload');
 		$fs->chown($sandbox_path, $user);
 		$fs->chgrp($sandbox_path, $settings["PROJECT_GROUP"]);
+		$fs->chown($sandbox_path_full, $user);
+		$fs->chgrp($sandbox_path_full, $settings["PROJECT_GROUP"]);
 		$output->writeln("Done");
 	}
 }
