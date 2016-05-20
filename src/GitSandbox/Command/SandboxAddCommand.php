@@ -81,6 +81,7 @@ class SandboxAddCommand extends Command {
 		if (!$fs->exists($project_path_full)) {
 			throw new \Exception('Project ' . $projectname . ' not exists');
 		}
+		$sandbox_path = "/home/" . $user . "/www/" . $projectname;
 		$sandbox_path_full = "/home/" . $user . "/www/" . $projectname . '/httpdocs';
 		$fs->mkdir($sandbox_path_full, 0775);
 		$fs->symlink($project_path_full . '/bitrix', $sandbox_path_full . '/bitrix');
