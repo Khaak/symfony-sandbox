@@ -153,10 +153,10 @@ class VirtualhostAddCommand extends Command {
 			if (!$process->isSuccessful()) {
 				$encoding = $settings["ENCODING_SITE"];
 			}else{
-				$output=trim($process->getOutput(), " \t");
+				$exec_output=trim($process->getOutput(), " \t");
 			}
-			if($output){
-				if(strpos($output, "#")===0){
+			if($exec_output){
+				if(strpos($exec_output, "#")===0){
 					$encoding = "UTF-8";
 				}else{
 					$encoding = "windows-1251";
