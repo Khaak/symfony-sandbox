@@ -121,10 +121,10 @@ class VirtualhostAddCommand extends Command {
 				fclose($handle);
 			}
 		}
-		$vhost_name = $projectname . "." . $settings["DOMAIN"];
+		$project_vhost_name = $projectname . "." . $settings["DOMAIN"];
 		$vhost_root = "/home/" . $settings["PROJECT_USER"] . "/projects/" . $projectname . "/httpdocs";
 		if ($type == "sandbox") {
-			$vhost_name = $user . "." . $vhost_name;
+			$vhost_name = $user . "." . $project_vhost_name;
 			$vhost_root = "/home/" . $user . "/www/" . $projectname . "/httpdocs";
 		}
 		$phpsessionsavepath = '/tmp/php_sessions/' . $vhost_name;
@@ -145,8 +145,9 @@ class VirtualhostAddCommand extends Command {
 		$httpdtemplatefile = $settings["TEMPLATES_DIR"] . "/" . $type . "/httpd/site_template.conf";
 		$nginxconffile = $settings["NGINX_CONF_DIR"] . "/sandbox/site_avaliable/" . $vhost_name . ".conf";
 		$httpdconffile = $settings["HTTPD_CONF_DIR"] . "/sandbox/conf/" . $vhost_name . ".conf";
+		$projecthttpdconffile = $settings["HTTPD_CONF_DIR"] . "/sandbox/conf/" . $project_vhost_name . ".conf";
 		if ($type == "sandbox") {
-			$process = new Process('grep -r "mbstring.func_overload[ \t]*0" '.$httpdconffile);
+			$process = new Process('grep -r "mbstring.func_overload[ \t]*0" '.$projecthttpdconffile);
 			$process->run();
 			if (!$process->isSuccessful()) {
 				throw new \RuntimeException($process->getErrorOutput());
