@@ -85,7 +85,7 @@ class SandboxAddCommand extends Command {
 		$fs->mkdir($sandbox_path, 0775);
 		$fs->symlink($project_path_full . '/bitrix', $sandbox_path . '/bitrix');
 		$fs->symlink($project_path_full . '/upload', $sandbox_path . '/upload');
-		$fs->chown($sandbox_path, $settings["PROJECT_USER"]);
+		$fs->chown($sandbox_path, $user);
 		$fs->chgrp($sandbox_path, $settings["PROJECT_GROUP"]);
 		$output->writeln("Done");
 	}
