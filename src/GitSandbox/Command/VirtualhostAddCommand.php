@@ -148,7 +148,7 @@ class VirtualhostAddCommand extends Command {
 		$httpdconffile = $settings["HTTPD_CONF_DIR"] . "/sandbox/conf/" . $vhost_name . ".conf";
 		$projecthttpdconffile = $settings["HTTPD_CONF_DIR"] . "/sandbox/conf/" . $project_vhost_name . ".conf";
 		if ($type == "sandbox") {
-			$process = new Process('grep -r "mbstring.func_overload[ \t]*0" '.$projecthttpdconffile);
+			$process = new Process('grep "mbstring.func_overload[ \t]*0" '.$projecthttpdconffile);
 			$process->run();
 			if (!$process->isSuccessful()) {
 				$encoding = $settings["ENCODING_SITE"];

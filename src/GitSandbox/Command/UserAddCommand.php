@@ -107,7 +107,7 @@ class UserAddCommand extends Command {
 			echo "An error occurred while chgrp directory at " . $e->getPath();
 		}
 
-		$process = new Process('usermod -G ' . $group . ' ' . $name);
+		$process = new Process('usermod -g ' . $group . ' ' . $name);
 		$process->run();
 		if (!$process->isSuccessful()) {
 			throw new \RuntimeException($process->getErrorOutput());
