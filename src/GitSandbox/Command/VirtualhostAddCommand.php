@@ -123,6 +123,7 @@ class VirtualhostAddCommand extends Command {
 			}
 		}
 		$project_vhost_name = $projectname . "." . $settings["DOMAIN"];
+		$vhost_name=$project_vhost_name;
 		$vhost_root = "/home/" . $settings["PROJECT_USER"] . "/projects/" . $projectname . "/httpdocs";
 		if ($type == "sandbox") {
 			$vhost_name = $user . "." . $project_vhost_name;
